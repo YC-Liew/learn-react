@@ -67,9 +67,6 @@
     padding-bottom: 50px;
 }
 
-.Details-div{
-}
-
 .Details-img{
     margin-top: 20px;
     padding: 20px;
@@ -77,12 +74,7 @@
     width: 250px;
 }
 
-.Details-div-img{
-}
-
 .Details-content{
-    margin-top: 10px;
-    margin-bottom: 25px;
     padding: 15px;
     background-color: rgb(96, 96, 247);
     width: 70%;
@@ -123,14 +115,14 @@
 }
 
 .Details-table-desc{
-    color: yellowgreen;
+    color:rgb(168, 245, 14);
     font-size: 18px;
 }
 
 .Details-table-desc2{
     padding-left: 7%;
     padding-right: 7%;
-    color: yellowgreen;
+    color: rgb(168, 245, 14);
 }
 
 .Details-table-cd-false{
@@ -141,4 +133,15 @@
 .Details-table-cd-true{
     color: rgb(40, 236, 40);
     font-size: 18px;
+}
+
+.Details-att1{
+    width: 150px;
+    color: rgb(168, 245, 14);
+    font-weight: bold;
+}
+
+.Details-att2{
+    min-width: 300px;
+    color: rgb(168, 245, 14);
 }

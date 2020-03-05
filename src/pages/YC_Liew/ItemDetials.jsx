@@ -4,10 +4,13 @@ import './Dota2.scss';
 function itemDetails({ match }) {
   useEffect(() => {
     fetchItem();
+    fetchAtt();
   }, []);
 
   const [item, setItem] = useState([]);
   const [cd, setCd] = useState(true);
+  const [att, setAtt] = useState([]);
+  let filter = 0;
 
   const fetchItem = async () => {
     const data = await fetch(
@@ -26,12 +29,10 @@ function itemDetails({ match }) {
               img: "http://cdn.dota2.com/" + `${object[property].img}`,
               cost: `${object[property].cost}`,
               lore: `${object[property].lore}`,
-              notes: `${object[property].notes}`,
-              CD: `${object[property].cd}`
+              CD: `${object[property].cd}`,
             }
           ]
         });
-        console.log(object[property].cd)
         if(object[property].cd == false)
         {
           setCd(false);
@@ -39,8 +40,33 @@ function itemDetails({ match }) {
       }
     }
   }
-
-  console.log(item, 'item')
+  
+  const fetchAtt = async () => {
+    const data = await fetch(
+      'https://api.opendota.com/api/constants/items'
+    );
+    const object = await data.json();
+    for (const property in object) {
+      if (property === match.params.id) {
+        if(object[property].attrib[filter] != undefined)
+        {
+        console.log(object[property].attrib[filter],'filter')
+        setAtt((preAtt) => {
+          return [
+            ...preAtt,
+            {
+              key: `${object[property].attrib[filter].key}`,
+              header: `${object[property].attrib[filter].header}`,
+              value: `${object[property].attrib[filter].value}`,
+              footer: `${object[property].attrib[filter].footer}`, 
+            }
+          ]
+        });
+        filter ++;
+      }
+      }
+    }
+  }
 
   return (
     <div className="Details-Main">
@@ -75,6 +101,20 @@ function itemDetails({ match }) {
                 <span></span>
               </div>
             </div>
+          </div>
+        </div>
+      ))}
+      {att.map(item => (
+        <div key={item.key}>
+          <div className="Details-content">
+          <table className="Details-table">
+            <tbody>
+              <tr>
+                <td className="Details-att1">{item.key}</td>
+                <td className="Details-att2">{item.header}{item.value}{item.footer}</td>
+              </tr>
+            </tbody>
+          </table>
           </div>
         </div>
       ))}
