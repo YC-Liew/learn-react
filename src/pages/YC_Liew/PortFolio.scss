@@ -1,8 +1,10 @@
 .content {
     padding: 5px;
     height: 740px;
-    overflow: hidden;
     background-color: rgb(209, 209, 209);
+    margin-left: auto;
+    margin-right: auto;
+    width: 1800px;
 }
 
 .picture {
@@ -27,6 +29,8 @@
     padding-left: 20px;
     float: left;
     width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .About{
@@ -49,4 +53,26 @@
     font-size: 18px;
     background-color: black;
     color: white;
+    height: 80px;
+}
+
+.button{
+    float: left;
+    width: 200px;
+    margin: 30px;
+    height: 50px;
+}
+
+.button-div{
+    width:1000px;
+    margin: 30px;
+}
+
+.MainContent div{
+    padding: 10px;
+    margin: 10px;
+}
+
+.MainContent input{
+    width: 1000px;
 }
